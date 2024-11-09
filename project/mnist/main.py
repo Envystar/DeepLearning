@@ -18,7 +18,7 @@ class NumberClassifier(object):
         self.b_j = np.zeros((10, 1))
         #superparaments
         self.learn_rate = 0.1
-        self.epochs = 5
+        self.epochs = 10
 
     def load_data(self, images_path, label_path, type=False):
         with open(images_path, 'rb') as f:  
@@ -33,6 +33,16 @@ class NumberClassifier(object):
         return train_data, train_labels
 
     def train(self):
+        # 正向传播
+        #     --输入层到中间层 
+        #     --sigmoid  $1 / (1 + e^{-x_i})$
+        #     --中间层到输出层
+        #     --sigmoid  $1 / (1 + e^{-x_i})$
+        # 定义损失函数
+        #     --采用均方误差函数 $\sigma(x_pred_i - x_i)^2 / len()$
+        # 反向传播
+        #     --输出层到隐藏层
+        #     --隐藏层到输入层
         for epoch in range(self.epochs):
             correct_num = 0
             for in_layer, in_label in zip(self.train_data, self.train_labels):
