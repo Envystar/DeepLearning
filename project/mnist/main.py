@@ -16,7 +16,7 @@ class NumberClassifier(object):
         self.b_i = np.zeros((90, 1))
         self.w_j = np.random.uniform(-0.5, 0.5, (10, 90))
         self.b_j = np.zeros((10, 1))
-        #superparaments
+        #hyperparameters
         self.learn_rate = 0.1
         self.epochs = 10
 
@@ -60,7 +60,7 @@ class NumberClassifier(object):
                 correct_num += int(np.argmax(target) == np.argmax(out_layer))
 
                 #反向传播
-                delta_out_layer = (out_layer - target) / 20 
+                delta_out_layer = (out_layer - target) / 5 
                 delta_out_layer = delta_out_layer * out_layer * (1 - out_layer) #sigmoid求导
 
                 #输出层->隐藏层
