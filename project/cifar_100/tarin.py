@@ -14,10 +14,10 @@ if __name__ == '__main__':
         transforms.RandomRotation(degrees=(-45, 45)),
         transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5)) 
     ])
-    train_set = datasets.CIFAR100(root='data', train=True, download=False, transform=transform)
+    train_set = datasets.CIFAR100(root='data', train=True, download=True, transform=transform)
     trainloader = torch.utils.data.DataLoader(train_set, batch_size=batch_size, shuffle=True)
 
-    test_set = datasets.CIFAR100(root='data', train=False, download=False, transform=transform)
+    test_set = datasets.CIFAR100(root='data', train=False, download=True, transform=transform)
     testloader = torch.utils.data.DataLoader(test_set, batch_size=batch_size, shuffle=False)
 
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')  
